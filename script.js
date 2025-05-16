@@ -1,11 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const apiUrl = 'https://api.klickrhein.de/v6/cms/events/1546?startsAfter=May+15+2025';
+  const getYesterdayDateString = () => {
+    const today = new Date();
+    today.setDate(today.getDate() - 1);
+    return today.toISOString().split('T')[0];
+  };
+
+  const isToday = (date) => {
+    const d = new Date(date);
+    const today = new Date();
+    return d.toDateString() === today.toDateString();
+  };
+
+  const apiUrl = `https://api.klickrhein.de/v6/cms/events/1546?startsAfter=${getYesterdayDateString()}`;
   const apiKey = '8526e6e1864c69674f8acb701dee2296';
 
   fetch(apiUrl, {
-    headers: {
-      'api-key': apiKey,
-    },
+    headers: { 'api-key': apiKey },
   })
     .then(response => response.json())
     .then(data => {
@@ -32,6 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (endDate && startDate.toDateString() !== endDate.toDateString()) {
           const formattedEnd = endDate.toLocaleDateString('de-DE', options);
           formattedDate = `${formattedStart} – ${formattedEnd}`;
+        }
+
+        if (isToday(startDate)) {
+          gerichtElement.classList.add('heute');
         }
 
         gerichtElement.innerHTML = `
