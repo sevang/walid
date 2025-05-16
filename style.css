@@ -59,9 +59,7 @@ main {
   color: #333;
 }
 
-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: #333;
-  color: white;
+.gericht.heute {
+  border: 2px solid #4CAF50;
+  background-color: #e8f5e9;
 }
