@@ -28,8 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
         gerichtElement.classList.add('gericht');
 
         const titel = event.title || 'Kein Titel';
-        const startDate = new Date(event.starts);
+        const startDate = event.starts ? new Date(event.starts) : null;
         const endDate = event.ends ? new Date(event.ends) : null;
+
+        // Wenn die Daten für startDate und endDate fehlen, überspringen wir dieses Event
+        if (!startDate) return;
 
         // Heute und Morgen
         const heuteIst = isToday(startDate);
@@ -50,11 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
           gerichtElement.classList.add('gericht-heute');
         }
 
+        // Erstelle das formattierte Datum
+        let formattedDate = '';
+        if (startDate) {
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          formattedDate = startDate.toLocaleDateString('de-DE', options);
+        }
+
         // Inhalt rendern: Nur „Heute“ und „Morgen“ ohne Datum
         gerichtElement.innerHTML = `
           ${heuteIst ? '<div class="badge-heute">📅 Heute</div>' : ''}
           ${morgenIst ? '<div class="badge-morgen">📅 Morgen</div>' : ''}
-          ${!heuteIst && !morgenIst ? `<div class="gericht-datum">${formattedDate}</div>` : ''}
+          ${!heuteIst && !morgenIst ? `<div class="gericht-datum">📆 ${formattedDate}</div>` : ''}
           <h3 class="gericht-titel">${titel}</h3>
         `;
 
