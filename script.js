@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const isTomorrow = (date) => {
     const d = new Date(date);
     const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1); // Morgen berechnen
+    tomorrow.setDate(tomorrow.getDate() + 1);
     return d.toDateString() === tomorrow.toDateString();
   };
 
@@ -72,21 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
           gerichtElement.classList.add('bewertung-rot');
         }
 
-        // Heutiger Tag oder Morgen — separater Stil
+        // Heutiger Tag — separater Stil
         const heuteIst = isToday(startDate);
         const morgenIst = isTomorrow(startDate);
-        
+
         if (heuteIst) {
-          gerichtElement.classList.add('heute');
+          gerichtElement.classList.add('gericht-heute');
         } else if (morgenIst) {
-          gerichtElement.classList.add('morgen');
+          gerichtElement.classList.add('gericht-morgen');
         }
 
         // Inhalt rendern
         gerichtElement.innerHTML = `
-          ${heuteIst ? '<div class="badge-heute">Heute</div>' : ''}
-          ${morgenIst ? '<div class="badge-morgen">Morgen</div>' : ''}
-          <div class="gericht-datum">${heuteIst || morgenIst ? '' : `📆 ${formattedDate}`}</div>
+          ${heuteIst ? '<div class="badge-heute">📆 Heute</div>' : ''}
+          ${morgenIst ? '<div class="badge-morgen">📆 Morgen</div>' : ''}
+          <div class="gericht-datum">${formattedDate}</div>
           <h3 class="gericht-titel">${titel}</h3>
         `;
 
