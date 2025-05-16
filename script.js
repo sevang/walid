@@ -73,4 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Fehler beim Abrufen der Daten:', error);
       document.getElementById('gerichte').innerHTML = '<p>Fehler beim Laden der Daten.</p>';
     });
+
+  // Hilfsfunktionen für "Heute" und "Morgen"
+  function isToday(date) {
+    const today = new Date();
+    return date.toDateString() === today.toDateString();
+  }
+
+  function isTomorrow(date) {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return date.toDateString() === tomorrow.toDateString();
+  }
+
+  function getYesterdayDateString() {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    return yesterday.toISOString().split('T')[0];  // Format: YYYY-MM-DD
+  }
 });
