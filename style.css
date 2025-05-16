@@ -85,7 +85,7 @@ main {
   background-color: #757575; /* Dezentes Grau */
   color: #FFFFFF;
   font-size: 1em;
-  font-weight: bold;
+  font-weight: normal; /* Nicht fett für „Morgen“ */
   padding: 4px 10px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -150,7 +150,15 @@ main {
   color: #757575; /* Titel wird in dezentem Grau hervorgehoben */
 }
 
-/* Entfernen der leeren Badges */
+/* Leere Badges Entfernen */
 .badge-leer {
   display: none;
+}
+
+/* Kalender Symbol für heute und morgen */
+.gericht-heute .gericht-datum::before,
+.gericht-morgen .gericht-datum::before {
+  content: "📆 ";
+  display: inline-block;
+  margin-right: 5px;
 }
