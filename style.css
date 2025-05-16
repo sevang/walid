@@ -69,41 +69,41 @@ main {
 /* Heute Badge */
 .badge-heute {
   display: inline-block;
-  background-color: #4CAF50; /* Sanftes Grün für „Heute“ */
+  background-color: #757575; /* Dezentes Grau */
   color: #FFFFFF;
   font-size: 1em;
   font-weight: bold;
   padding: 4px 10px;
   border-radius: 5px;
   margin-bottom: 10px;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.8); /* Leichtes Leuchten in Grün */
+  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6); /* Sanftes Leuchten in Grau */
 }
 
 /* Morgen Badge */
 .badge-morgen {
   display: inline-block;
-  background-color: #FFD700; /* Sanftes Gelb für „Morgen“ */
+  background-color: #757575; /* Dezentes Grau */
   color: #FFFFFF;
   font-size: 1em;
   font-weight: bold;
   padding: 4px 10px;
   border-radius: 5px;
   margin-bottom: 10px;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8); /* Leichtes Leuchten in Gelb */
+  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6); /* Sanftes Leuchten in Grau */
 }
 
 /* Heutiger Tag - Hervorhebung */
 .gericht-heute {
-  border: 2px solid #4CAF50; /* Grüner Rahmen für das heutige Gericht */
+  border: 2px solid #757575; /* Grauer Rahmen für das heutige Gericht */
   background-color: #2c3e50; /* Dunklerer Hintergrund */
-  box-shadow: 0 0 15px rgba(76, 175, 80, 0.6); /* Leichtes Leuchten in Grün */
+  box-shadow: 0 0 15px rgba(117, 117, 117, 0.6); /* Leichtes Leuchten in Grau */
 }
 
 .gericht-heute .gericht-datum {
-  background-color: #4CAF50; /* Grüner Hintergrund für das Datum */
+  background-color: #757575; /* Grauer Hintergrund für das Datum */
   color: #ffffff; /* Weißer Text */
   font-weight: bold;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.6); /* Leichtes Leuchten in Grün */
+  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6); /* Leichtes Leuchten in Grau */
 }
 
 /* Bewertungshintergründe */
@@ -137,15 +137,20 @@ main {
 
 /* Heute - nur der Text „Heute“ ohne Datum */
 .gericht-heute .gericht-datum {
-  background-color: #4CAF50; /* Grüner Hintergrund für das Datum */
+  background-color: #757575; /* Grauer Hintergrund für das Datum */
   color: #ffffff; /* Weißer Text */
   font-weight: bold;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.6); /* Leichtes Leuchten in Grün */
+  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6); /* Leichtes Leuchten in Grau */
   padding: 5px 10px;
   display: inline-block;
 }
 
 .gericht-heute .gericht-titel {
   font-weight: bold;
-  color: #4CAF50; /* Titel wird grün hervorgehoben */
+  color: #757575; /* Titel wird in dezentem Grau hervorgehoben */
+}
+
+/* Entfernen der leeren Badges */
+.badge-leer {
+  display: none;
 }
