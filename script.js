@@ -86,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         gerichtElement.innerHTML = `
           ${heuteIst ? '<div class="badge-heute">📆 Heute</div>' : ''}
           ${morgenIst ? '<div class="badge-morgen">📆 Morgen</div>' : ''}
-          <div class="gericht-datum">${formattedDate}</div>
           <h3 class="gericht-titel">${titel}</h3>
         `;
 
