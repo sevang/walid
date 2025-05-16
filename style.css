@@ -63,3 +63,31 @@ main {
   border: 2px solid #4CAF50;
   background-color: #e8f5e9;
 }
+
+.bewertung-gruen {
+  background-color: #e8f5e9;
+  border: 2px solid #66bb6a;
+}
+
+.bewertung-orange {
+  background-color: #fff3e0;
+  border: 2px solid #ffa726;
+}
+
+.bewertung-rot {
+  background-color: #ffebee;
+  border: 2px solid #ef5350;
+}
+
+/* Heute-Hervorhebung */
+.heute::before {
+  content: "📅 Heute";
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-size: 0.8em;
+  margin-bottom: 5px;
+}
+
