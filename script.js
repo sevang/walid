@@ -27,8 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const guteGerichte = ['schnitzel tiroler', 'gr. frikadelle tiroler'];
-      const mittlereGerichte = ['vegetarischer burger', 'kl. frikadelle tiroler', 'cordon bleu'];
+      const guteGerichte = ['schnitzel "tiroler art"', 'gr. frikadelle "tiroler art"'];
+      const mittlereGerichte = ['vegetarischer burger', 'fleischkäse "tiroler art"', 'kl. frikadelle "tiroler art"', 'cordon bleu'];
 
 
       data.events.forEach(event => {
