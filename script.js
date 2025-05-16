@@ -3,28 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const guteGerichte = ['schnitzel "tiroler art"', 'gr. frikadelle "tiroler art"', 'hähnchen burger', 'jumbo'];
   const mittlereGerichte = ['vegetarischer burger', 'fleischkäse "tiroler art"', 'kl. frikadelle "tiroler art"', 'cordon bleu'];
 
-  // Gestern als ISO-Date für API-Parameter
-  const getYesterdayDateString = () => {
-    const today = new Date();
-    today.setDate(today.getDate() - 1);
-    return today.toISOString().split('T')[0]; // Format: YYYY-MM-DD
-  };
-
-  // Vergleich: Ist das Datum heute?
-  const isToday = (date) => {
-    const d = new Date(date);
-    const today = new Date();
-    return d.toDateString() === today.toDateString();
-  };
-
-  // Vergleich: Ist das Datum morgen?
-  const isTomorrow = (date) => {
-    const d = new Date(date);
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    return d.toDateString() === tomorrow.toDateString();
-  };
-
   // API-URL dynamisch
   const apiUrl = `https://api.klickrhein.de/v6/cms/events/1546?startsAfter=${getYesterdayDateString()}`;
   const apiKey = '8526e6e1864c69674f8acb701dee2296';
@@ -72,20 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
           gerichtElement.classList.add('bewertung-rot');
         }
 
-        // Heutiger Tag — separater Stil
+        // Heute und morgen visuell hervorheben
         const heuteIst = isToday(startDate);
         const morgenIst = isTomorrow(startDate);
 
         if (heuteIst) {
           gerichtElement.classList.add('gericht-heute');
-        } else if (morgenIst) {
-          gerichtElement.classList.add('gericht-morgen');
         }
 
         // Inhalt rendern
         gerichtElement.innerHTML = `
-          ${heuteIst ? '<div class="badge-heute">📆 Heute</div>' : ''}
-          ${morgenIst ? '<div class="badge-morgen">📆 Morgen</div>' : ''}
+          ${heuteIst ? '<div class="badge-heute">📅 Heute</div>' : ''}
+          ${morgenIst ? '<div class="badge-morgen">📅 Morgen</div>' : ''}
+          <div class="gericht-datum">${formattedDate}</div>
           <h3 class="gericht-titel">${titel}</h3>
         `;
 
