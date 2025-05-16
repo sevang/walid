@@ -1,163 +1,98 @@
-/* Global Reset */
+/* Grundstil */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Dark Mode Grundstil */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #1a1a1a; /* Dunkler Hintergrund */
-  color: #e0e0e0; /* Helle Schriftfarbe */
-  line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+  background-color: #121212;
+  color: #f4f4f4;
 }
 
-/* Header-Stil */
 header {
-  background-color: #333333;
-  color: #ffffff;
+  background-color: #333;
+  color: white;
   text-align: center;
   padding: 20px;
-  font-size: 1.5em;
-  font-weight: bold;
 }
 
-/* Hauptinhalt */
 main {
   padding: 20px;
 }
 
-/* Gerichte Container */
 #gerichte {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-/* Gerichte Karte */
 .gericht {
-  background-color: #2c2c2c;
-  border: 1px solid #444444;
+  background-color: #1e1e1e;
+  border: 1px solid #333;
   border-radius: 8px;
   padding: 15px;
   width: calc(50% - 10px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Titel des Gerichts */
 .gericht h3 {
   margin-bottom: 10px;
   font-size: 1.2em;
-  font-weight: bold;
-  color: #e0e0e0; /* Helle Schriftfarbe */
-}
-
-/* Datum für das Gericht */
-.gericht-datum {
-  font-size: 1em;
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #ffffff; /* Weißer Text */
-  background-color: #3C3C3C;
-  padding: 5px 10px;
-  border-radius: 12px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  display: inline-block;
-}
-
-/* Heute Badge */
-.badge-heute {
-  display: inline-block;
-  background-color: #757575;
-  color: #FFFFFF;
-  font-size: 1em;
-  font-weight: bold;
-  padding: 4px 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6); /* Sanftes Leuchten in Grau */
-}
-
-/* Morgen Badge */
-.badge-morgen {
-  display: inline-block;
-  background-color: #757575;
-  color: #FFFFFF;
-  font-size: 1em;
-  font-weight: normal; /* Nicht fett für „Morgen“ */
-  padding: 4px 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6); /* Sanftes Leuchten in Grau */
-}
-
-/* Heutiger Tag - Hervorhebung */
-.gericht-heute {
-  border: 2px solid #757575; /* Grauer Rahmen für das heutige Gericht */
-  background-color: #2c3e50;
-  box-shadow: 0 0 15px rgba(117, 117, 117, 0.6); /* Leichtes Leuchten in Grau */
-}
-
-.gericht-heute .gericht-datum {
-  background-color: #757575;
-  color: #ffffff;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6);
+  color: #fff;
 }
 
 /* Bewertungshintergründe */
 .bewertung-gruen {
-  background-color: #2d3f2b;
+  background-color: #2e7d32;
   border: 2px solid #66bb6a;
 }
-
 .bewertung-orange {
-  background-color: #3c3c2f;
-  border: 2px solid #ffa726;
+  background-color: #ffa726;
+  border: 2px solid #ff9800;
 }
-
 .bewertung-rot {
-  background-color: #3c2f2f;
+  background-color: #e57373;
   border: 2px solid #ef5350;
 }
 
-/* Datum - Style für andere Tage */
-.gericht-datum {
-  font-size: 1em;
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #ffffff;
-  background-color: #3C3C3C;
-  padding: 5px 10px;
-  border-radius: 12px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+/* Heute und Morgen Badges */
+.badge-heute, .badge-morgen {
   display: inline-block;
-}
-
-/* Kalender Symbol für heute, morgen und den Rest der Tage */
-.gericht-datum::before {
-  content: "📆 ";
-  display: inline-block;
-  margin-right: 5px;
-}
-
-/* Heute - nur der Text „Heute“ ohne Datum */
-.gericht-heute .gericht-datum {
-  background-color: #757575;
-  color: #ffffff;
+  background-color: #2f3337;
+  color: #fff;
+  font-size: 0.9em;
   font-weight: bold;
-  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6);
-  padding: 5px 10px;
-  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 5px;
+  margin-bottom: 8px;
 }
 
-.gericht-heute .gericht-titel {
+.badge-heute {
+  background-color: #4caf50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.8);
+}
+
+.badge-morgen {
+  background-color: #ff9800;
+  box-shadow: 0 0 10px rgba(255, 152, 0, 0.8);
+}
+
+/* Heute und Morgen spezielle Darstellung */
+.gericht-heute {
+  border: 2px solid #4caf50;
+  background-color: #388e3c;
+}
+
+.gericht-morgen {
+  border: 2px solid #ff9800;
+  background-color: #f57c00;
+}
+
+/* Titel */
+.gericht-titel {
+  font-size: 1.2em;
   font-weight: bold;
-  color: #757575;
-}
-
-/* Leere Badges Entfernen */
-.badge-leer {
-  display: none;
+  color: #fff;
 }
