@@ -7,9 +7,9 @@
 
 /* Dark Mode Grundstil */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: system-ui, sans-serif;
   background-color: #1a1a1a;
-  color: #e0e0e0;
+  color: #ffffff;
   line-height: 1.6;
 }
 
@@ -50,15 +50,16 @@ main {
   margin-bottom: 10px;
   font-size: 1.2em;
   font-weight: bold;
-  color: #e0e0e0;
+  color: #ffffff;
 }
 
 /* Einheitlicher Stil für alle Datums-Badges */
-.gericht-datum, .badge-morgen {
+.gericht-datum,
+.badge-morgen {
   font-size: 1em;
   font-weight: 500;
   margin-bottom: 5px;
-  color: #fff;
+  color: #ffffff;
   background-color: #3C3C3C;
   padding: 5px 10px;
   border-radius: 12px;
@@ -70,7 +71,7 @@ main {
 .badge-heute {
   display: inline-block;
   background-color: #5a5a5a;
-  color: #fff;
+  color: #ffffff;
   font-size: 1em;
   font-weight: 500;
   padding: 4px 10px;
