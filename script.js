@@ -12,18 +12,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const gerichteContainer = document.getElementById('gerichte');
       gerichteContainer.innerHTML = ''; // Leeren Inhalt
 
+      if (!data.events || data.events.length === 0) {
+        gerichteContainer.innerHTML = '<p>Keine Gerichte gefunden.</p>';
+        return;
+      }
+
       data.events.forEach(event => {
         const gerichtElement = document.createElement('div');
         gerichtElement.classList.add('gericht');
 
-        const titel = event.title || 'Kein Titel verfügbar';
-        const datum = event.date || 'Kein Datum verfügbar';
-        const beschreibung = event.description || 'Keine Beschreibung verfügbar';
+        const titel = event.title || 'Kein Titel';
+        const startDate = new Date(event.starts);
+        const endDate = event.ends ? new Date(event.ends) : null;
+
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedStart = startDate.toLocaleDateString('de-DE', options);
+        let formattedDate = formattedStart;
+
+        if (endDate && startDate.toDateString() !== endDate.toDateString()) {
+          const formattedEnd = endDate.toLocaleDateString('de-DE', options);
+          formattedDate = `${formattedStart} – ${formattedEnd}`;
+        }
 
         gerichtElement.innerHTML = `
           <h3>${titel}</h3>
-          <p><strong>Datum:</strong> ${datum}</p>
-          <p><strong>Beschreibung:</strong> ${beschreibung}</p>
+          <p><strong>Datum:</strong> ${formattedDate}</p>
         `;
 
         gerichteContainer.appendChild(gerichtElement);
@@ -31,6 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .catch(error => {
       console.error('Fehler beim Abrufen der Daten:', error);
-      document.getElementById('gerichte').innerHTML = '<p>Fehler beim Laden der Daten. Bitte versuche es später erneut.</p>';
+      document.getElementById('gerichte').innerHTML = '<p>Fehler beim Laden der Daten.</p>';
     });
 });
