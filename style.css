@@ -50,15 +50,32 @@ main {
   color: #FFFFFF; /* Weißer Text für den Titel */
 }
 
-/* Gericht Datum */
+/* Gericht Datum (jetzt Badge-Stil) */
 .gericht-datum {
   font-size: 1em;
   font-weight: 500;
   margin-bottom: 5px;
-  color: #B0B0B0; /* Dezenteres Grau für das Datum */
+  color: #FFFFFF; /* Weißer Text für Datum */
   display: flex;
   align-items: center;
   gap: 5px;
+  padding: 5px 10px;
+  background-color: #3C3C3C; /* Dunkler Hintergrund für das Datum */
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Dezenter Schlagschatten */
+}
+
+/* Heute-Hervorhebung: Leuchtender Rahmen um das heutige Gericht */
+.heute {
+  border: 4px solid #A0C4FF; /* Sanftes Blau für den heutigen Tag */
+  background-color: inherit; /* Hintergrundfarbe bleibt unverändert */
+  box-shadow: 0 0 15px rgba(160, 196, 255, 0.6); /* Leicht leuchtender Schlagschatten für "Heute" */
+}
+
+/* Heute Datum (nur Text "Heute" anzeigen) */
+.heute .gericht-datum {
+  background-color: #3C3C3C; /* Hintergrund bleibt dunkel */
+  box-shadow: 0 0 15px rgba(160, 196, 255, 0.8); /* Leuchtenderer Schatten für das heutige Datum */
 }
 
 /* Titel des Gerichts */
@@ -67,13 +84,6 @@ main {
   font-weight: bold;
   margin-bottom: 10px;
   color: #FFFFFF;
-}
-
-/* Heute-Hervorhebung */
-.heute {
-  border: 4px solid #A0C4FF; /* Sehr sanftes Blau für den heutigen Tag */
-  background-color: inherit; /* Hintergrundfarbe bleibt unverändert */
-  box-shadow: 0 0 10px rgba(160, 196, 255, 0.3); /* Sehr sanfter Schlagschatten */
 }
 
 /* Bewertungshintergründe */
@@ -102,15 +112,4 @@ main {
   padding: 4px 8px;
   border-radius: 5px;
   margin-bottom: 8px;
-}
-
-/* Datum visuell aufgewertet */
-.gericht-datum {
-  font-size: 1em;
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #B0B0B0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
