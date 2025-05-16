@@ -41,10 +41,6 @@ main {
   font-size: 1.2em;
 }
 
-.gericht p {
-  font-size: 0.9em;
-}
-
 .gericht-titel {
   font-size: 1.2em;
   font-weight: bold;
@@ -52,38 +48,12 @@ main {
   color: #333;
 }
 
-.gericht.heute {
+/* Heute-Hervorhebung */
+.heute {
   border: 2px solid #4CAF50;
   background-color: #e8f5e9;
 }
 
-
-/* Heute-Hervorhebung */
-.heute::before {
-  content: "📅 Heute";
-  display: inline-block;
-  background-color: #4CAF50;
-  color: white;
-  padding: 2px 6px;
-  border-radius: 5px;
-  font-size: 0.8em;
-  margin-bottom: 5px;
-}
-/* Bewertungshintergründe */
-.bewertung-gruen {
-  background-color: #e8f5e9;
-  border: 2px solid #66bb6a;
-}
-.bewertung-orange {
-  background-color: #fff3e0;
-  border: 2px solid #ffa726;
-}
-.bewertung-rot {
-  background-color: #ffebee;
-  border: 2px solid #ef5350;
-}
-
-/* Heutiger Tag - zusätzliche Markierung */
 .badge-heute {
   display: inline-block;
   background-color: #4CAF50;
@@ -93,6 +63,22 @@ main {
   padding: 4px 8px;
   border-radius: 5px;
   margin-bottom: 8px;
+}
+
+/* Bewertungshintergründe */
+.bewertung-gruen {
+  background-color: #e8f5e9;
+  border: 2px solid #66bb6a;
+}
+
+.bewertung-orange {
+  background-color: #fff3e0;
+  border: 2px solid #ffa726;
+}
+
+.bewertung-rot {
+  background-color: #ffebee;
+  border: 2px solid #ef5350;
 }
 
 /* Datum visuell aufgewertet */
@@ -105,4 +91,3 @@ main {
   align-items: center;
   gap: 5px;
 }
-
