@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Bewertungs-Keywords
-  const guteGerichte = ['schnitzel "tiroler art"', 'gr. frikadelle "tiroler art"'];
+  const guteGerichte = ['schnitzel "tiroler art"', 'gr. frikadelle "tiroler art"', 'hähnchen burger', 'jumbo'];
   const mittlereGerichte = ['vegetarischer burger', 'fleischkäse "tiroler art"', 'kl. frikadelle "tiroler art"', 'cordon bleu'];
 
   // Gestern als ISO-Date für API-Parameter
