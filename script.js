@@ -27,37 +27,53 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
+      const guteGerichte = ['schnitzel tiroler', 'gr. frikadelle tiroler'];
+      const mittlereGerichte = ['vegetarischer burger', 'kl. frikadelle tiroler', 'cordon bleu'];
+
+
       data.events.forEach(event => {
         const gerichtElement = document.createElement('div');
         gerichtElement.classList.add('gericht');
-
+      
         const titel = event.title || 'Kein Titel';
         const startDate = new Date(event.starts);
         const endDate = event.ends ? new Date(event.ends) : null;
-
+      
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const formattedStart = startDate.toLocaleDateString('de-DE', options);
         let formattedDate = formattedStart;
-
+      
         if (endDate && startDate.toDateString() !== endDate.toDateString()) {
           const formattedEnd = endDate.toLocaleDateString('de-DE', options);
           formattedDate = `${formattedStart} – ${formattedEnd}`;
         }
-
+      
+        const lowerTitle = titel.toLowerCase();
+        if (guteGerichte.some(g => lowerTitle.includes(g))) {
+          gerichtElement.classList.add('bewertung-gruen');
+        } else if (mittlereGerichte.some(m => lowerTitle.includes(m))) {
+          gerichtElement.classList.add('bewertung-orange');
+        } else {
+          gerichtElement.classList.add('bewertung-rot');
+        }
+      
         if (isToday(startDate)) {
           gerichtElement.classList.add('heute');
         }
-
+      
         gerichtElement.innerHTML = `
           <div class="gericht-datum">${formattedDate}</div>
           <h3 class="gericht-titel">${titel}</h3>
         `;
-
+      
         gerichteContainer.appendChild(gerichtElement);
       });
+
     })
     .catch(error => {
       console.error('Fehler beim Abrufen der Daten:', error);
       document.getElementById('gerichte').innerHTML = '<p>Fehler beim Laden der Daten.</p>';
     });
 });
+
+
