@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => response.json())
     .then(data => {
       const gerichteContainer = document.getElementById('gerichte');
-      gerichteContainer.innerHTML = ''; // Leeren Inhalt
+      gerichteContainer.innerHTML = '';
 
       if (!data.events || data.events.length === 0) {
         gerichteContainer.innerHTML = '<p>Keine Gerichte gefunden.</p>';
@@ -35,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         gerichtElement.innerHTML = `
-          <h3>${titel}</h3>
-          <p><strong>Datum:</strong> ${formattedDate}</p>
+          <div class="gericht-datum">${formattedDate}</div>
+          <h3 class="gericht-titel">${titel}</h3>
         `;
 
         gerichteContainer.appendChild(gerichtElement);
