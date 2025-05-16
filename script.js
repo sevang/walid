@@ -1,21 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Bewertungs-Keywords
+  const guteGerichte = ['schnitzel "tiroler art"', 'gr. frikadelle "tiroler art"'];
+  const mittlereGerichte = ['vegetarischer burger', 'fleischkäse "tiroler art"', 'kl. frikadelle "tiroler art"', 'cordon bleu'];
+
+  // Gestern als ISO-Date für API-Parameter
   const getYesterdayDateString = () => {
     const today = new Date();
     today.setDate(today.getDate() - 1);
-    return today.toISOString().split('T')[0];
+    return today.toISOString().split('T')[0]; // Format: YYYY-MM-DD
   };
 
+  // Vergleich: Ist das Datum heute?
   const isToday = (date) => {
     const d = new Date(date);
     const today = new Date();
     return d.toDateString() === today.toDateString();
   };
 
+  // API-URL dynamisch
   const apiUrl = `https://api.klickrhein.de/v6/cms/events/1546?startsAfter=${getYesterdayDateString()}`;
   const apiKey = '8526e6e1864c69674f8acb701dee2296';
 
+  // Daten abrufen
   fetch(apiUrl, {
-    headers: { 'api-key': apiKey },
+    headers: {
+      'api-key': apiKey,
+    },
   })
     .then(response => response.json())
     .then(data => {
@@ -27,27 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      const guteGerichte = ['schnitzel "tiroler art"', 'gr. frikadelle "tiroler art"'];
-      const mittlereGerichte = ['vegetarischer burger', 'fleischkäse "tiroler art"', 'kl. frikadelle "tiroler art"', 'cordon bleu'];
-
-
       data.events.forEach(event => {
         const gerichtElement = document.createElement('div');
         gerichtElement.classList.add('gericht');
-      
+
         const titel = event.title || 'Kein Titel';
         const startDate = new Date(event.starts);
         const endDate = event.ends ? new Date(event.ends) : null;
-      
+
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const formattedStart = startDate.toLocaleDateString('de-DE', options);
         let formattedDate = formattedStart;
-      
+
         if (endDate && startDate.toDateString() !== endDate.toDateString()) {
           const formattedEnd = endDate.toLocaleDateString('de-DE', options);
           formattedDate = `${formattedStart} – ${formattedEnd}`;
         }
-      
+
+        // Bewertung zuerst (Farben)
         const lowerTitle = titel.toLowerCase();
         if (guteGerichte.some(g => lowerTitle.includes(g))) {
           gerichtElement.classList.add('bewertung-gruen');
@@ -56,24 +63,25 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           gerichtElement.classList.add('bewertung-rot');
         }
-      
-        if (isToday(startDate)) {
+
+        // Heutiger Tag — separater Stil
+        const heuteIst = isToday(startDate);
+        if (heuteIst) {
           gerichtElement.classList.add('heute');
         }
-      
+
+        // Inhalt rendern
         gerichtElement.innerHTML = `
-          <div class="gericht-datum">${formattedDate}</div>
+          ${heuteIst ? '<div class="badge-heute">📅 Heute</div>' : ''}
+          <div class="gericht-datum">📆 ${formattedDate}</div>
           <h3 class="gericht-titel">${titel}</h3>
         `;
-      
+
         gerichteContainer.appendChild(gerichtElement);
       });
-
     })
     .catch(error => {
       console.error('Fehler beim Abrufen der Daten:', error);
       document.getElementById('gerichte').innerHTML = '<p>Fehler beim Laden der Daten.</p>';
     });
 });
-
-
