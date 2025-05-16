@@ -31,14 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const startDate = new Date(event.starts);
         const endDate = event.ends ? new Date(event.ends) : null;
 
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        const formattedStart = startDate.toLocaleDateString('de-DE', options);
-        let formattedDate = formattedStart;
-
-        if (endDate && startDate.toDateString() !== endDate.toDateString()) {
-          const formattedEnd = endDate.toLocaleDateString('de-DE', options);
-          formattedDate = `${formattedStart} – ${formattedEnd}`;
-        }
+        // Heute und Morgen
+        const heuteIst = isToday(startDate);
+        const morgenIst = isTomorrow(startDate);
 
         // Bewertung zuerst (Farben)
         const lowerTitle = titel.toLowerCase();
@@ -51,18 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Heute und morgen visuell hervorheben
-        const heuteIst = isToday(startDate);
-        const morgenIst = isTomorrow(startDate);
-
         if (heuteIst) {
           gerichtElement.classList.add('gericht-heute');
         }
 
-        // Inhalt rendern
+        // Inhalt rendern: Nur „Heute“ und „Morgen“ ohne Datum
         gerichtElement.innerHTML = `
           ${heuteIst ? '<div class="badge-heute">📅 Heute</div>' : ''}
           ${morgenIst ? '<div class="badge-morgen">📅 Morgen</div>' : ''}
-          <div class="gericht-datum">${formattedDate}</div>
+          ${!heuteIst && !morgenIst ? `<div class="gericht-datum">${formattedDate}</div>` : ''}
           <h3 class="gericht-titel">${titel}</h3>
         `;
 
