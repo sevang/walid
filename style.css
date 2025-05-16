@@ -50,40 +50,24 @@ main {
   color: #FFFFFF; /* Weißer Text für den Titel */
 }
 
-/* Gericht Datum (jetzt Badge-Stil) */
+/* Gericht Datum (nun als Badge) */
 .gericht-datum {
   font-size: 1em;
   font-weight: 500;
   margin-bottom: 5px;
   color: #FFFFFF; /* Weißer Text für Datum */
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
   background-color: #3C3C3C; /* Dunkler Hintergrund für das Datum */
+  padding: 5px 10px;
   border-radius: 12px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); /* Dezenter Schlagschatten */
+  display: inline-block; /* Nur so groß wie der Inhalt (Text) */
 }
 
 /* Heute-Hervorhebung: Leuchtender Rahmen um das heutige Gericht */
 .heute {
   border: 4px solid #A0C4FF; /* Sanftes Blau für den heutigen Tag */
-  background-color: inherit; /* Hintergrundfarbe bleibt unverändert */
-  box-shadow: 0 0 15px rgba(160, 196, 255, 0.6); /* Leicht leuchtender Schlagschatten für "Heute" */
-}
-
-/* Heute Datum (nur Text "Heute" anzeigen) */
-.heute .gericht-datum {
-  background-color: #3C3C3C; /* Hintergrund bleibt dunkel */
-  box-shadow: 0 0 15px rgba(160, 196, 255, 0.8); /* Leuchtenderer Schatten für das heutige Datum */
-}
-
-/* Titel des Gerichts */
-.gericht-titel {
-  font-size: 1.2em;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #FFFFFF;
+  background-color: inherit; /* Hintergrund bleibt unverändert */
+  box-shadow: 0 0 20px rgba(160, 196, 255, 0.8); /* Deutlich leuchtenderer Schlagschatten für "Heute" */
 }
 
 /* Bewertungshintergründe */
@@ -102,14 +86,8 @@ main {
   border: 2px solid #9B4F4F; /* Dezenter roter Rand */
 }
 
-/* Badge für "Heute" (wurde entfernt, falls nicht gewünscht) */
+/* Heutiger Tag - keine Badge-Anzeige, nur Hervorhebung des Gerichts */
 .badge-heute {
-  display: inline-block;
-  background-color: #A0C4FF; /* Sehr sanftes Blau für "Heute" */
-  color: white;
-  font-size: 0.75em;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 5px;
-  margin-bottom: 8px;
+  display: none; /* Badge für "Heute" entfernt */
 }
+
