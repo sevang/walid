@@ -69,17 +69,17 @@ main {
 /* Heute Badge */
 .badge-heute {
   display: inline-block;
-  background-color: #757575;
+  background-color: #3a3a3a; /* Dunkleres Grau für "Heute" */
   color: #FFFFFF;
   font-size: 1em;
   font-weight: bold;
   padding: 4px 10px;
   border-radius: 5px;
   margin-bottom: 10px;
-  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6); /* Sanftes Leuchten in Grau */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6); /* Sanftes Leuchten */
 }
 
-/* Heutiger Tag - Hervorhebung */
+/* Heute - Hervorhebung */
 .gericht-heute {
   border: 2px solid #757575; /* Grauer Rahmen für das heutige Gericht */
   background-color: #2c3e50;
@@ -109,29 +109,17 @@ main {
   border: 2px solid #ef5350;
 }
 
-/* Datum für das Gericht - Wenn es nicht „Heute“ oder „Morgen“ ist */
-.badge-morgen .gericht-datum {
-  font-size: 1em;
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #ffffff;
-  background-color: #3C3C3C;
-  padding: 5px 10px;
-  border-radius: 12px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+/* Morgen Badge - Genau wie das heutige Datum, aber ohne fett und kleinerer Schatten */
+.badge-morgen {
   display: inline-block;
-}
-
-/* Heutiger Tag - Hervorhebung */
-.gericht-heute {
-  border: 2px solid #757575; /* Grauer Rahmen für das heutige Gericht */
-  background-color: #2c3e50;
-  box-shadow: 0 0 15px rgba(117, 117, 117, 0.6); /* Leichtes Leuchten in Grau */
-}
-
-.gericht-heute .gericht-titel {
-  font-weight: bold;
-  color: #757575;
+  background-color: #757575; /* Grauton für Morgen */
+  color: #FFFFFF;
+  font-size: 1em;
+  font-weight: normal; /* Nicht fett für „Morgen“ */
+  padding: 4px 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 8px rgba(117, 117, 117, 0.5); /* Leichtes Leuchten */
 }
 
 /* Leere Badges Entfernen */
