@@ -45,6 +45,20 @@ main {
   font-size: 0.9em;
 }
 
+.gericht-datum {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.gericht-titel {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
 footer {
   text-align: center;
   padding: 10px;
