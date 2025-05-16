@@ -122,7 +122,7 @@ main {
   border: 2px solid #ef5350;
 }
 
-/* Datum - Style für andere Tage */
+/* Datum für das Gericht - Wenn es nicht „Heute“ oder „Morgen“ ist */
 .gericht-datum {
   font-size: 1em;
   font-weight: 500;
@@ -142,14 +142,11 @@ main {
   margin-right: 5px;
 }
 
-/* Heute - nur der Text „Heute“ ohne Datum */
-.gericht-heute .gericht-datum {
-  background-color: #757575;
-  color: #ffffff;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(117, 117, 117, 0.6);
-  padding: 5px 10px;
-  display: inline-block;
+/* Heutiger Tag - Hervorhebung */
+.gericht-heute {
+  border: 2px solid #757575; /* Grauer Rahmen für das heutige Gericht */
+  background-color: #2c3e50;
+  box-shadow: 0 0 15px rgba(117, 117, 117, 0.6); /* Leichtes Leuchten in Grau */
 }
 
 .gericht-heute .gericht-titel {
